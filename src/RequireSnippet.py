@@ -34,7 +34,7 @@ class RequireSnippet():
         promisify = self.promisify()
         require_fmt = 'require({quote}{path}{quote})'
         import_fmt = 'import ${{1:{name}}}'
-        import_fmt += ' from {quote}{path}{quote};'
+        import_fmt += ' from {quote}{path}{quote}'
 
         if promisify:
             require_fmt = '%s(%s)' % (promisify, require_fmt)
@@ -45,6 +45,7 @@ class RequireSnippet():
                 require_fmt = self.var_type + ' ' + require_fmt
 
         if should_add_semicolon:
+            import_fmt += ';'
             require_fmt += ';'
 
         if should_strip_setter_whitespace['before']:
